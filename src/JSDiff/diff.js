@@ -75,10 +75,60 @@ function resizeContent() {
     document.getElementById('result').style.height = size + "px";
 
 }
+//Create two objects in order to 
+var cellOne = new Object();
+var cellTwo = new Object();
 
-//generated the middle diff results
-function generateDiff() {
-    if (document.getElementById('file1').value === "")
+//Give the two cells some properties
+cellOne.cell_type = "code"; // 
+cellOne.input = "import matplotlib.pyplot as plt\nx = linspace(0, 5, 10)";	//
+cellOne.language = "python";		//
+cellOne.level = 1;	//
+
+cellTwo.cell_type = "code";	//
+cellTwo.input = "import matplotlib.pyplot as plt\nx = linspace(0, 5, 10)\ny = x ** 2\n\nfig1 = figure()\nplot(x, y, 'r')\nxlabel('x')\nylabel('y')\ntitle('title')";	//
+cellTwo.language = "python";//
+cellTwo.level = 2;	//
+
+//generate the diff results
+function generateDiff(cellOne, cellTwo) {
+var diffText = "";
+
+	if (cellOne[cellType] !== cellTwo[cellType]) {
+		// Add the cellOne[cellType] to the output
+		diffText.concat(cellOne[cellType]);
+		diffText.concat(" ");
+		diffText.concat(cellTwo[cellType]);
+		diffText.concat("\n");
+		}
+		
+	if (cellOne[input] !== cellTwo[input]){
+		// Add the cellOne[input] to the output
+		diffText.concat(cellOne[cellType]);
+		diffText.concat(" ");
+		diffText.concat(cellTwo[cellType]);
+		diffText.concat("\n");
+	}
+	
+	if (cellOne[language] !== cellTwo[language]){
+		// Add the cellOne[language] to the output
+		diffText.concat(cellOne[language]);
+		diffText.concat(" ");
+		diffText.concat(cellTwo[language]);
+		diffText.concat("\n");
+	}
+	
+	if (cellOne[level] !== cellTwo[level]){
+		// Add the cellOne[language] to the output
+		diffText.concat(cellOne[level]);
+		diffText.concat(" ");
+		diffText.concat(cellTwo[level]);
+		diffText.concat("\n");
+	}
+
+	document.write(diffText);
+	
+    /*if (document.getElementById('file1').value === "")
         alert("Please Specify the Left File.");
     else if (document.getElementById('file2').value === "")
         alert("Please Specify the Right File.");
@@ -209,7 +259,7 @@ function generateDiff() {
         }
         document.getElementById("result").innerHTML = JSON.stringify(
                 results, null, 1);
-        resizeContent();
+        resizeContent(); */
     }
 }
 
