@@ -75,55 +75,47 @@ function resizeContent() {
     document.getElementById('result').style.height = size + "px";
 
 }
-//Create two objects in order to 
-var cellOne = new Object();
-var cellTwo = new Object();
 
-//Give the two cells some properties
-cellOne.cell_type = "code"; // 
-cellOne.input = "import matplotlib.pyplot as plt\nx = linspace(0, 5, 10)";	//
-cellOne.language = "python";		//
-cellOne.level = 1;	//
+function Cell(cType, input, language, level){
+this.cType = cType;
+this.input = input;
+this.language = language;
+this.level = level;
+}
+//Create two objects in order to compare them later
+var cellA = new Cell("code", "import matplotlib.pyplot as plt\nx = linspace(0, 5, 10)", "python", 1);
+var cellB = new Cell("code", "import matplotlib.pyplot as plt\nx = linspace(0, 5, 10)\ny = x ** 2\n\nfig1 = figure()\nplot(x, y, 'r')\nxlabel('x')\nylabel('y')\ntitle('title')", "python", 2);
 
-cellTwo.cell_type = "code";	//
-cellTwo.input = "import matplotlib.pyplot as plt\nx = linspace(0, 5, 10)\ny = x ** 2\n\nfig1 = figure()\nplot(x, y, 'r')\nxlabel('x')\nylabel('y')\ntitle('title')";	//
-cellTwo.language = "python";//
-cellTwo.level = 2;	//
 
 //generate the diff results
-function generateDiff(cellOne, cellTwo) {
-var diffText = "";
-
-	if (cellOne[cellType] !== cellTwo[cellType]) {
-		// Add the cellOne[cellType] to the output
-		diffText.concat(cellOne[cellType]);
+function generateDiff(cellA, cellB) {
+var diffText="";
+	if (cellA.cType !== cellB.cType) {
+		diffText.concat(cellA.cType);
 		diffText.concat(" ");
-		diffText.concat(cellTwo[cellType]);
-		diffText.concat("\n");
+		diffText.concat(cellB.cType);
+		diffText.concat("<br>");
 		}
 		
-	if (cellOne[input] !== cellTwo[input]){
-		// Add the cellOne[input] to the output
-		diffText.concat(cellOne[cellType]);
+	if (cellA.input !== cellB.input){
+		diffText.concat(cellA.cType);
 		diffText.concat(" ");
-		diffText.concat(cellTwo[cellType]);
-		diffText.concat("\n");
+		diffText.concat(cellB.cType);
+		diffText.concat("<br>");
 	}
 	
-	if (cellOne[language] !== cellTwo[language]){
-		// Add the cellOne[language] to the output
-		diffText.concat(cellOne[language]);
+	if (cellA.language !== cellB.language){
+		diffText.concat(cellA.language);
 		diffText.concat(" ");
-		diffText.concat(cellTwo[language]);
-		diffText.concat("\n");
+		diffText.concat(cellB.language);
+		diffText.concat("<br>");
 	}
 	
-	if (cellOne[level] !== cellTwo[level]){
-		// Add the cellOne[language] to the output
-		diffText.concat(cellOne[level]);
+	if (cellA.level !== cellB.level){
+		diffText.concat(cellA.level);
 		diffText.concat(" ");
-		diffText.concat(cellTwo[level]);
-		diffText.concat("\n");
+		diffText.concat(cellB.level);
+		diffText.concat("<br>");
 	}
 
 	document.write(diffText);
@@ -261,7 +253,7 @@ var diffText = "";
                 results, null, 1);
         resizeContent(); */
     }
-}
+
 
 //compares the ipynb attributes.
 function compareIPYNBAtt(att, left, right) {
