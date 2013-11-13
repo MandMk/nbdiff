@@ -99,7 +99,7 @@ max-width:50%;
 overflow-x: hidden;
 }
 #second-bar{
-float:right;
+float:right; 
 max-width:50%;
 overflow-x: hidden;
 }
@@ -186,6 +186,19 @@ visibility: visible;
 visibility: hidden;
 }
 
+.saveButton{
+position:fixed;
+right:10px;
+top:5px;
+}
+
+.questionButton{
+position:fixed;
+right:55px;
+top:5px;
+}
+
+
 </style>
 
 </head>
@@ -201,7 +214,8 @@ visibility: hidden;
 </noscript>
 <img src="newlogo.png" alt="logo"/>
 <div id="site" class="border-box-sizing" style="display: block;">
-
+<input type='button' value='save' data-cell-idx='0' class = 'saveButton' />
+<input type='button' value='?' data-cell-idx='0' class = 'questionButton' />
 
 <div id="ipython-main-app" class="border-box-sizing" >
 
@@ -210,6 +224,10 @@ visibility: hidden;
 
 
 <div class="container" id="notebook-container">
+
+
+<p style ="text-align: center; top: 62px;">Staging</p>
+<hr>
 
   
 <div class='row'>
@@ -1307,7 +1325,7 @@ visibility: hidden;
 <div class="CodeMirror-selected" style="position: absolute; left: 0px; top: 17px; width: 1072px; height: 17px;">
 </div>
 </div>
-<div class="CodeMirror-code" style=""><pre class = "deleted" ><span class="cm-variable">fruits</span> = [<div class = " deleted-ul"> <span class="cm-string">'apple'</span>, <span class="cm-string">'orange'</span>, <span class="cm-string">'mango'</span></div>]</pre><pre><span class="cm-keyword">for</span> <span class="cm-variable">fruit</span> <span class="cm-operator">in</span> <span class="cm-variable">fruits</span>:</pre><pre>    <span class="cm-keyword">print</span> <span class="cm-string">' Current fruit: '</span>,<span class="cm-variable">fruit</span></pre><pre>&nbsp;</pre>
+<div class="CodeMirror-code" style=""><pre class = "deleted" ><span class="cm-variable">fruits</span> = [<span class = "deleted-ul"> <span class="cm-string">'apple'</span>, <span class="cm-string">'orange'</span>, <span class="cm-string">'mango'</span></span>]</pre><pre><span class="cm-keyword">for</span> <span class="cm-variable">fruit</span> <span class="cm-operator">in</span> <span class="cm-variable">fruits</span>:</pre><pre>    <span class="cm-keyword">print</span> <span class="cm-string">' Current fruit: '</span>,<span class="cm-variable">fruit</span></pre><pre>&nbsp;</pre>
 </div>
 <div class="CodeMirror-cursor" style="left: 0px; top: 51px; height: 17px; visibility: hidden;">&nbsp;
 </div>
